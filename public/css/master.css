@@ -1,0 +1,43 @@
+html {
+  font-size: 16px;
+}
+
+.color-container {
+  height: 90vh;
+  width: 50rem;
+  border: 1px solid coral;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.one {
+  background-color: blue;
+  height: 90vh;
+  width: 20%;
+}
+
+.two {
+  background-color: red;
+  height: 90vh;
+  width: 20%;
+}
+
+.three {
+  background-color: coral;
+  height: 90vh;
+  width: 20%;
+}
+
+.four {
+  background-color: green;
+  height: 90vh;
+  width: 20%;
+}
+
+.five {
+  background-color: pink;
+  height: 90vh;
+  width: 20%;
+}
