@@ -11,4 +11,9 @@ const changeColor = () => {
   elements.forEach( element => $(element).css('background-color', `#${newColor()}`))
 }
 
+const lockColor = () => {
+  console.log('locked')
+}
+
+$('.save').on('click', lockColor)
 $('.generate-btn').on('click', changeColor);
