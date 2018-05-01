@@ -8,7 +8,6 @@ const newColor = () => {
 const elements = ['.one','.two', '.three', '.four', '.five']
 
 const changeColor = () => {
-
   elements.forEach( element => {
     if (!$(element).hasClass('locked')) {
       $(element).css('background-color', `#${newColor()}`)
@@ -19,6 +18,7 @@ const changeColor = () => {
 const lockColor = () => {
   console.log(event.target.parentNode)
   $(event.target.parentNode).toggleClass('locked')
+  $(event.target).toggleClass('locked-btn')
 }
 
 $('.save').on('click', lockColor)
