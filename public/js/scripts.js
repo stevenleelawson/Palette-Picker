@@ -6,6 +6,11 @@ const newColor = () => {
 }
 
 const elements = ['.one','.two', '.three', '.four', '.five']
+let palettes = [];
+
+const addPalette = (event) => {
+  console.log(event.target)
+}
 
 const changeColor = () => {
   elements.forEach( element => {
@@ -21,5 +26,6 @@ const lockColor = () => {
   $(event.target).toggleClass('locked-btn')
 }
 
+$('.palette-btn').on('click', addPalette)
 $('.save').on('click', lockColor)
 $('.generate-btn').on('click', changeColor);
