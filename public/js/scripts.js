@@ -18,6 +18,9 @@ const populateProjectNames = (projectNames) => {
       text: project.title
     }))
   })
+  $.each(projectNames, (index, project) => {
+    $('.display-projects').append($(`<h3>${project.title}</h3>`))
+  })
 }
 
 const getProjectNames = async () => {
@@ -30,6 +33,9 @@ const getProjectNames = async () => {
   }
 }
 
+const getPaletteColors = async () => {
+
+}
 // getProjectNames();
 
 const postProject = async (projects) => {

@@ -142,3 +142,13 @@ h2 {
 button:hover {
   background-color: #00A638;
 }
+
+.display-projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+h3 {
+  margin: 1rem;
+}
