@@ -25,10 +25,27 @@ app.post('/api/v1/projects', (request, response) => {
     response.status(500).json({ error })
   })
 })
-    
+
+app.post('/api/v1/projects/:id/palettes', (request, response) => {
+  const palette = request.body;
+  database('palettes').insert({...palette, project_id: request.params.id}, 'id')
+    .then(palette => {
+      response.status(201).json({ id: palette[0] })
+    })
+    .catch(error => {
+      response.status(500).json({ error })
+    })
+});
+
 app.get('/api/v1/projects', (request, response) => {
   database('projects').select()
   .then(projects => response.status(200).json(projects))
+  .catch(error => response.status(500).json(error))
+});
+
+app.get('/api/v1/projects/:id/palettes', (request, response) => {
+  database('palettes').select().where('project_id', request.params.id)
+  .then(palettes => response.status(200).json(palettes))
   .catch(error => response.status(500).json(error))
 });
 
