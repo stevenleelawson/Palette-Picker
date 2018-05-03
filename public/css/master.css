@@ -5,6 +5,23 @@ html {
   font-family: 'Lora', serif;
 }
 
+.content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+}
+
+aside {
+  height: 90vh;
+  width: 20%;
+  background-color: #fff;
+  border: 2px solid black;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -28,6 +45,7 @@ h1 {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  border: 2px solid black;
 }
 
 div {
@@ -79,4 +97,58 @@ div {
 
 .locked-btn {
   background-image: url('./assets/lock.png');
+}
+
+.project-options,
+.new-project-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.select-options {
+  margin: .5rem;
+  width: 10.5rem;
+  font-family: 'Lora', serif;
+}
+
+input {
+  margin: .5rem;
+  width: 10rem;
+  font-family: 'Lora', serif;
+}
+
+button {
+  width: 10.5rem;
+  font-family: 'Lora', serif;
+  color: white;
+  background-color: black;
+  height: 30px;
+  margin: .5rem;
+  border: none;
+  font-size: 1.2rem;
+  padding: 3px;
+}
+
+h2 {
+  padding: 3px;
+}
+
+.generate-btn {
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #00A638;
+}
+
+.display-projects {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+h3 {
+  margin: 1rem;
 }
