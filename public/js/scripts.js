@@ -13,15 +13,15 @@ let projects = [];
 
 const populateProjectNames = (projectNames) => {
   $.each(projectNames, (index, project) => {
-    $('.select-options').append($(`<option>`, {
-      value: project.id,
-      text: project.title
-    }))
+    $('.select-options').append(`<option value=${project.id}>${project.title}</option>`)
+    getPaletteColors(project.id)
   })
   $.each(projectNames, (index, project) => {
     $('.display-projects').append($(`<h3>${project.title}</h3>`))
   })
 }
+
+console.log($('.select-options').val())
 
 const getProjectNames = async () => {
   try {
@@ -33,8 +33,16 @@ const getProjectNames = async () => {
   }
 }
 
-const getPaletteColors = async () => {
-
+const getPaletteColors = async (projectId) => {
+  const project_id = $('.select-options').val();
+  try {
+    const response = await
+     fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`);
+    const projectPalettes = await response.json();
+    console.log(projectPalettes)
+  } catch(error) {
+    throw new Error('unable to get palettes' + error)
+  }
 }
 // getProjectNames();
 
@@ -52,9 +60,9 @@ const postProject = async (projects) => {
   }
 }
 
-const postPalette = async (palettes) => {
+const postPalette = async (palettes, projectId) => {
   try {
-    const response = await fetch('http://localhost:3000/api/v1/projects/:id/palettes', {
+    const response = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
       method: 'POST',
       body: JSON.stringify(palettes),
       headers: {
@@ -66,8 +74,13 @@ const postPalette = async (palettes) => {
   }
 }
 
+
 const objMaker = (string) => {
   return { title: string }
+}
+
+const paletteObjMaker = (string) => {
+  return { name: string }
 }
 
 const addProject = (event) => {
@@ -78,8 +91,9 @@ const addProject = (event) => {
 }
 
 const addPalette = (event) => {
+  const id = $('.select-options').val();
   const paletteName = $('.new-palette').val();
-  console.log(palettes)
+  postPalette(palettes, id);
 }
 
 const captureColor = () => {
@@ -87,6 +101,7 @@ const captureColor = () => {
     palettes.push($(element).css('background-color'))
   })
 }
+
 captureColor()
 console.log(palettes[0])
 const changeColor = () => {
@@ -102,11 +117,12 @@ const lockColor = () => {
   $(event.target).toggleClass('locked-btn')
 }
 
-
+$('.select-options').on('click', () => console.log($('.select-options').val()))
 $('.project-btn').on('click', addProject)
 $('.palette-btn').on('click', addPalette)
 $('.save').on('click', lockColor)
 $('.generate-btn').on('click', changeColor);
 $( document ).ready(function() {
     getProjectNames()
+
 });

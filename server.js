@@ -28,6 +28,7 @@ app.post('/api/v1/projects', (request, response) => {
 
 app.post('/api/v1/projects/:id/palettes', (request, response) => {
   const palette = request.body;
+  debugger
   database('palettes').insert({...palette, project_id: request.params.id}, 'id')
     .then(palette => {
       response.status(201).json({ id: palette[0] })
@@ -52,3 +53,5 @@ app.get('/api/v1/projects/:id/palettes', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log('Palette Picker be a listenin');
 });
+
+module.exports = app;
