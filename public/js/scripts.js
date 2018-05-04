@@ -25,7 +25,7 @@ console.log($('.select-options').val())
 
 const getProjectNames = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/v1/projects', { mode: 'no-cors' });
+    const response = await fetch('/api/v1/projects', { mode: 'no-cors' });
     const projectNames = await response.json();
     populateProjectNames(projectNames)
   } catch(error) {
@@ -37,7 +37,7 @@ const getPaletteColors = async (projectId) => {
   const project_id = $('.select-options').val();
   try {
     const response = await
-     fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`);
+     fetch(`/api/v1/projects/${projectId}/palettes`);
     const projectPalettes = await response.json();
     console.log(projectPalettes)
   } catch(error) {
@@ -48,7 +48,7 @@ const getPaletteColors = async (projectId) => {
 
 const postProject = async (projects) => {
   try {
-    const response = await fetch('http://localhost:3000/api/v1/projects', {
+    const response = await fetch('/api/v1/projects', {
       method: 'POST',
       body: JSON.stringify(projects),
       headers: {
@@ -62,7 +62,7 @@ const postProject = async (projects) => {
 
 const postPalette = async (palettes, projectId) => {
   try {
-    const response = await fetch(`http://localhost:3000/api/v1/projects/${projectId}/palettes`, {
+    const response = await fetch(`/api/v1/projects/${projectId}/palettes`, {
       method: 'POST',
       body: JSON.stringify(palettes),
       headers: {
