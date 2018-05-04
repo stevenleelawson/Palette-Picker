@@ -25,7 +25,7 @@ console.log($('.select-options').val())
 
 const getProjectNames = async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/v1/projects');
+    const response = await fetch('http://localhost:3000/api/v1/projects', { mode: 'no-cors' });
     const projectNames = await response.json();
     populateProjectNames(projectNames)
   } catch(error) {
