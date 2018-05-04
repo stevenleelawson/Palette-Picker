@@ -60,11 +60,13 @@ const postProject = async (projects) => {
   }
 }
 
-const postPalette = async (palettes, projectId) => {
+
+
+const postPalette = async (palettesObj, projectId) => {
   try {
     const response = await fetch(`/api/v1/projects/${projectId}/palettes`, {
       method: 'POST',
-      body: JSON.stringify(palettes),
+      body: JSON.stringify(palettesObj),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -79,9 +81,6 @@ const objMaker = (string) => {
   return { title: string }
 }
 
-const paletteObjMaker = (string) => {
-  return { name: string }
-}
 
 const addProject = (event) => {
   const project = $('.new-project').val();
@@ -93,7 +92,13 @@ const addProject = (event) => {
 const addPalette = (event) => {
   const id = $('.select-options').val();
   const paletteName = $('.new-palette').val();
-  postPalette(palettes, id);
+  const paletteObj = paletteObjMaker(paletteName)
+  console.log(paletteObj)
+  postPalette(paletteObj, id);
+}
+
+const paletteObjMaker = (name) => {
+  return { name: name, color_array: palettes }
 }
 
 const captureColor = () => {
