@@ -10,7 +10,7 @@ const elements = ['.one','.two', '.three', '.four', '.five']
 
 let palettes = [];
 let projects = [];
-
+console.log('palettesarr', palettes)
 const populateProjectNames = (projectNames) => {
   $.each(projectNames, (index, project) => {
     $('.select-options').append(`<option value=${project.id}>${project.title}</option>`)
@@ -21,12 +21,18 @@ const populateProjectNames = (projectNames) => {
   })
 }
 
-console.log($('.select-options').val())
+const populateProjectPalettes = (projectPalettes) => {
+  $.each(projectPalettes, (index, palette) => {
+    console.log('populate', palette)
+    // $('.display-projects').append($(`<div class='palette-array'></div>`).css('background-color', ))
+  })
+}
 
 const getProjectNames = async () => {
   try {
     const response = await fetch('/api/v1/projects', { mode: 'no-cors' });
     const projectNames = await response.json();
+    console.log('prooject',projectNames)
     populateProjectNames(projectNames)
   } catch(error) {
     throw new Error('unable to get projects' + error)
@@ -39,7 +45,8 @@ const getPaletteColors = async (projectId) => {
     const response = await
      fetch(`/api/v1/projects/${projectId}/palettes`);
     const projectPalettes = await response.json();
-    console.log(projectPalettes)
+    console.log('paletecolor',projectPalettes)
+    populateProjectPalettes(projectPalettes)
   } catch(error) {
     throw new Error('unable to get palettes' + error)
   }
