@@ -3,7 +3,7 @@ node_js: "node"
 services:
   - postgresql
 before_script:
-  - psql -c 'palettepicker_test;' -U postgres
+  - psql -c 'create database palettepicker_test;' -U postgres
 # node_js:
 #   - "iojs"
 #   - "7"
