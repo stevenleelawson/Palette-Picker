@@ -1,6 +1,8 @@
 language: node_js
 node_js: "node"
-
+services: postgresql
+before_script:
+  - psql -c 'palettepicker;' -U postgres
 # node_js:
 #   - "iojs"
 #   - "7"
