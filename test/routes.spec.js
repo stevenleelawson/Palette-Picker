@@ -7,7 +7,7 @@ const server = require('../server');
 chai.use(chaiHttp);
 
 describe('Testing endpoints', () => {
-  it('GET all projects', (done) => {
+  it.skip('GET all projects', (done) => {
     chai.request(server)
     .get('/api/v1/projects')
     .end((err, response) => {
